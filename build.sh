@@ -2,6 +2,6 @@
 
 set -x
 
-docker build -t yakutovich/aiida-docker-base:latest ./
+docker build -t yakutovich/aiida-base:latest ./
 
 #EOF

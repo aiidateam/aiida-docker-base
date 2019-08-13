@@ -1,6 +1,7 @@
 # See https://github.com/phusion/baseimage-docker/blob/master/Changelog.md
 # Based on Ubuntu 18.04 since v0.11
 FROM phusion/baseimage:0.11
+MAINTAINER AiiDA Team <@aiida.net>
 
 USER root
 
@@ -33,11 +34,20 @@ RUN apt-get update && apt-get install -y --no-install-recommends   \
 # Set Python3 be the default python version
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 1
 
+# update build-tools
+RUN pip3 install -U pip setuptools wheel
+
+# launch start-singleuser
+COPY opt/start-singleuser.sh /opt/start-singleuser-base.sh
+COPY my_init.d/start-singleuser.sh /etc/my_init.d/30_start-singleuser.sh
+
 # Install AiiDA
-RUN pip3 install aiida-core['rest','atomic_tools']==v1.0.0b5
+RUN pip install aiida-core['rest','atomic_tools']==v1.0.0b5
 
 # Add USER (no password)
-RUN useradd -m -s /bin/bash aiida
+RUN mkdir /home/aiida                                             && \
+    useradd --home /home/aiida --uid 1234 --shell /bin/bash aiida && \
+    chown -R aiida:aiida /home/aiida
 
 # Install rest of the packages as normal user
 USER aiida
