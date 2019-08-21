@@ -8,12 +8,14 @@ In order to update the AiiDA version, go to Docker file and change the following
 RUN pip3 install aiida-core[ ... ]==vX.Y.Z
 
 ```
-Adapt X.Y.Z numbers to the latest AiiDA version
+Adapt X.Y.Z numbers to the latest AiiDA version. Once this is done,
+run the following commands:
+
 ```
-./build.sh
-./tag.sh # to add the version number as the image's tag
-./push.sh # to push the image tagged with version number
-./push_latest.sh # to push the image tagged with 'latest'
+./build.sh # to build the new aiida-base docker container locally
+./tag.sh # to specify the AiiDA version number as the image's tag
+./push.sh # to push the image tagged with the version number to the Docker Hub
+./push_latest.sh # to push the image tagged with 'latest' to the Docker Hub
 ```
 
 ## Acknowledgements
