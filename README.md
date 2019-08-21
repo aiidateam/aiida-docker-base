@@ -1,5 +1,5 @@
 # AiiDA docker base
-This repository contains the Docker file that installs only [AiiDA](http://www.aiida.net)
+This repository contains the Docker file that installs [AiiDA](http://www.aiida.net)
 and its Python dependencies.
 
 ## Updating the image
@@ -12,13 +12,28 @@ Adapt X.Y.Z numbers to the latest AiiDA version. Once this is done,
 run the following commands:
 
 ```
-./build.sh # to build the new aiida-base docker container locally
+./build.sh # to build the new aiida-docker-base image locally and tag it as 'latest'
 ./tag.sh # to specify the AiiDA version number as the image's tag
 ./push.sh # to push the image tagged with the version number to the Docker Hub
 ./push_latest.sh # to push the image tagged with 'latest' to the Docker Hub
 ```
 
-## Acknowledgements
+The docker image contains:
+ * minimal Ubuntu base image (phusion/baseimage)
+ * Python 3 environment
+ * user `aiida`
+ * `aiida-core` and its dependencies pip-installed
+ * `PYTHONPATH` (in `/home/aiida/.bashrc` points to `/home/aiida`)
+ * `PATH` (in `/home/aiida/.bashrc` points to `/home/aiida/.local/bin`)
+
+# Docker Hub repository
+
+The corresponding docker image is built automatically on Docker Hub:
+
+https://hub.docker.com/r/aiidateam/aiida-docker-stack
+
+
+# Acknowledgements
 
 This work is supported by the [MARVEL National Centre for Competency in Research](<http://nccr-marvel.ch>)
 funded by the [Swiss National Science Foundation](<http://www.snf.ch/en>), as well as by the [MaX
