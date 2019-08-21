@@ -2,6 +2,6 @@
 
 set -x
 
-docker push yakutovich/aiida-base:latest
+docker push aiidateam/aiida-docker-base:latest
 
 #EOF

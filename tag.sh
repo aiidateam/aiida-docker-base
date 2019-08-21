@@ -4,6 +4,6 @@ set -x
 
 VERSION="$(grep 'install aiida' Dockerfile | cut -d'=' -f3)"
 
-docker tag yakutovich/aiida-base:latest yakutovich/aiida-base:${VERSION}
+docker tag aiidateam/aiida-docker-base:latest aiidateam/aiida-docker-base:${VERSION}
 
 #EOF
