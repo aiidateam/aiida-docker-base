@@ -30,7 +30,7 @@ The docker image contains:
 
 The corresponding docker image is built automatically on Docker Hub:
 
-https://hub.docker.com/r/aiidateam/aiida-docker-stack
+https://hub.docker.com/r/aiidateam/aiida-docker-base
 
 
 # Acknowledgements
