@@ -44,10 +44,16 @@ COPY my_init.d/start-singleuser.sh /etc/my_init.d/30_start-singleuser.sh
 # Install AiiDA
 RUN pip install aiida-core['rest','atomic_tools']==v1.0.0b5
 
-# Add USER (no password)
+# Add aiida user (no password)
 RUN mkdir /home/aiida                                             && \
     useradd --home /home/aiida --uid 1234 --shell /bin/bash aiida && \
     chown -R aiida:aiida /home/aiida
+
+# Add .bashrc file to the aiida user
+RUN cp -v /etc/skel/.bashrc /etc/skel/.bash_logout /etc/skel/.profile /home/aiida/
+RUN echo 'eval "$(verdi completioncommand)"' >> /home/aiida/.bashrc
+RUN echo 'export PYTHONPATH="/home/aiida"' >> /home/aiida/.bashrc
+RUN echo 'export PATH=$PATH:"/home/aiida/.local/bin"' >> /home/aiida/.bashrc
 
 # Install rest of the packages as normal user
 USER aiida

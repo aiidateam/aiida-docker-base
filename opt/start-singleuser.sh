@@ -11,17 +11,8 @@ set -x
 export SHELL=/bin/bash
 
 #===============================================================================
+# update the list available entry points
 reentry scan
-
-#===============================================================================
-# create bashrc
-if [ ! -e /home/aiida/.bashrc ]; then
-   cp -v /etc/skel/.bashrc /etc/skel/.bash_logout /etc/skel/.profile /home/aiida/
-   echo 'eval "$(verdi completioncommand)"' >> /home/aiida/.bashrc
-   echo 'export PYTHONPATH="/home/aiida"' >> /home/aiida/.bashrc
-   echo 'export PATH=$PATH:"/home/aiida/.local/bin"' >> /home/aiida/.bashrc
-fi
-
 
 #===============================================================================
 # generate ssh key
