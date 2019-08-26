@@ -22,7 +22,7 @@ The docker image contains:
 
 # Docker Hub repository
 
-The docker image is built automatically on Docker Hub once new changes were pushed to the `master` or `develop` branches of the corresponding GitHub repository.
+The docker image is built automatically on Docker Hub once new changes are pushed to the `master` or `develop` branches of this repository.
 The image pushed to the `master` will be tagged as `latest`, the image pushed to the `develop` branch will be tagged as `develop`.
 In addition to that any new version tag that is pushed to the repository will trigger Docker Hub to build the image with the same tag as on the GitHub.
 
