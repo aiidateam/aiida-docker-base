@@ -8,15 +8,9 @@ In order to update the AiiDA version, go to Docker file and change the following
 RUN pip3 install aiida-core[ ... ]==vX.Y.Z
 
 ```
-Adapt X.Y.Z numbers to the latest AiiDA version. Once this is done,
-run the following commands:
+Adapt X.Y.Z numbers to the latest AiiDA version.
 
-```
-./build.sh # to build the new aiida-docker-base image locally and tag it as 'latest'
-./tag.sh # to specify the AiiDA version number as the image's tag
-./push.sh # to push the image tagged with the version number to the Docker Hub
-./push_latest.sh # to push the image tagged with 'latest' to the Docker Hub
-```
+## Docker image
 
 The docker image contains:
  * minimal Ubuntu base image (phusion/baseimage)
@@ -28,10 +22,11 @@ The docker image contains:
 
 # Docker Hub repository
 
-The corresponding docker image is built automatically on Docker Hub:
+The docker image is built automatically on Docker Hub once new changes were pushed to the `master` or `develop` branches of the corresponding GitHub repository.
+The image pushed to the `master` will be tagged as `latest`, the image pushed to the `develop` branch will be tagged as `develop`.
+In addition to that any new version tag that is pushed to the repository will trigger Docker Hub to build the image with the same tag as on the GitHub.
 
-https://hub.docker.com/r/aiidateam/aiida-docker-base
-
+All the images are available following this link: https://hub.docker.com/r/aiidateam/aiida-docker-base.
 
 # Acknowledgements
 

@@ -17,8 +17,8 @@ addons:
             - openssh-client
 
 install:
-    - ./build.sh
-    - ./run.sh
+    - docker build -t aiida-docker-base .
+    - docker run -d aiida-docker-base
 
 # I just run a command with verdi that returns a zero error code to see if
 # verdi is installed properly
