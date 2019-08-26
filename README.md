@@ -23,7 +23,7 @@ The docker image contains:
 # Docker Hub repository
 
 The docker image is built automatically on Docker Hub once new changes are pushed to the `master` or `develop` branches of this repository.
-The image pushed to the `master` will be tagged as `latest`, the image pushed to the `develop` branch will be tagged as `develop`.
+The `master` branch is available under the docker tag `latest`, while the `develop` branch is available under the docker tag `develop`.
 In addition to that any new version tag that is pushed to the repository will trigger Docker Hub to build the image with the same tag as on the GitHub.
 
 All the images are available following this link: https://hub.docker.com/r/aiidateam/aiida-docker-base.
