@@ -42,7 +42,7 @@ COPY opt/start-singleuser.sh /opt/start-singleuser-base.sh
 COPY my_init.d/start-singleuser.sh /etc/my_init.d/30_start-singleuser.sh
 
 # Install AiiDA
-RUN pip install aiida-core['rest','atomic_tools']==v1.0.0b5
+RUN pip install aiida-core['rest','atomic_tools']==1.0.0
 
 # Add aiida user (no password)
 RUN mkdir /home/aiida                                             && \
